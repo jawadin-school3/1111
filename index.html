@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة متطورة - Frutiger Aero</title>
+    <style>
+        /* === Reset & Base Styles === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0b8793 0%, #360033 100%);
+            background-attachment: fixed;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* === Frutiger Aero Dynamic Background Orbs === */
+        .aero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.65;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #00d2ff, #0083b0);
+            top: -80px;
+            right: -80px;
+        }
+
+        .orb-2 {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #a8ff78, #78ffd6);
+            bottom: -120px;
+            left: -120px;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-35px) scale(1.05); }
+        }
+
+        /* === Glassmorphic Calculator Body === */
+        .calculator {
+            width: 440px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px) saturate(190%);
+            -webkit-backdrop-filter: blur(20px) saturate(190%);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35),
+                        inset 0 2px 5px rgba(255, 255, 255, 0.9),
+                        inset 0 -3px 5px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Top Gloss Reflection Layer */
+        .calculator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
+            border-radius: 28px 28px 100% 100%;
+            pointer-events: none;
+        }
+
+        /* Calculator Header */
+        .calc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .calc-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .badge {
+            background: linear-gradient(180deg, #81fbb8 0%, #28c76f 100%);
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: #053b1b;
+            font-size: 0.75rem;
+            font-weight: bold;
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* === Screen Display === */
+        .screen {
+            background: rgba(12, 28, 36, 0.82);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 15px 20px;
+            text-align: left;
+            direction: ltr;
+            margin-bottom: 20px;
+            box-shadow: inset 0 5px 12px rgba(0, 0, 0, 0.7), 0 2px 6px rgba(255, 255, 255, 0.3);
+        }
+
+        .expression {
+            min-height: 24px;
+            font-size: 1rem;
+            color: #78ffd6;
+            opacity: 0.85;
+            font-family: 'Consolas', 'Courier New', monospace;
+            word-break: break-all;
+        }
+
+        .result {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.7);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        /* === Buttons Grid === */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        /* Glassy Aero Buttons */
+        .btn {
+            border: none;
+            outline: none;
+            padding: 14px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            position: relative;
+            overflow: hidden;
+            color: #173747;
+            background: linear-gradient(180deg, #ffffff 0%, #dbeeff 48%, #b2d8f7 52%, #d8ecfc 100%);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.25),
+                        inset 0 1px 2px rgba(255,255,255,0.9),
+                        inset 0 -2px 3px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.8);
+            text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 8%;
+            width: 84%;
+            height: 42%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.1) 100%);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3), inset 0 1px 3px rgba(255,255,255,1);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: inset 0 3px 6px rgba(0,0,0,0.35);
+            filter: brightness(0.95);
+        }
+
+        /* Operators Styling */
+        .btn-op {
+            background: linear-gradient(180deg, #aae7ff 0%, #3ca0e7 48%, #167cc3 52%, #5cb8f8 100%);
+            color: #ffffff;
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+            border: 1px solid #72c6ff;
+        }
+
+        /* Scientific Functions Styling */
+        .btn-sci {
+            background: linear-gradient(180deg, #e8f5e9 0%, #a5d6a7 48%, #66bb6a 52%, #81c784 100%);
+            color: #0d3c12;
+            font-size: 0.92rem;
+            border: 1px solid #a5d6a7;
+        }
+
+        /* Delete & Clear Buttons */
+        .btn-clear {
+            background: linear-gradient(180deg, #ffaaaa 0%, #e73c3c 48%, #c21c1c 52%, #f85b5b 100%);
+            color: #ffffff;
+            text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+            border: 1px solid #ff7272;
+        }
+
+        /* Equals Button */
+        .btn-equals {
+            grid-column: span 2;
+            background: linear-gradient(180deg, #b3ffc6 0%, #2ecc71 48%, #1e9a53 52%, #53e78e 100%);
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-shadow: 0 -1px 2px rgba(0,0,0,0.4);
+            border: 1px solid #72ff9b;
+        }
+
+        /* Log Panel */
+        .history-box {
+            margin-top: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 14px;
+            padding: 10px 14px;
+            max-height: 85px;
+            overflow-y: auto;
+            direction: ltr;
+            font-size: 0.85rem;
+            color: #d1f7ff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: monospace;
+        }
+
+        .history-title {
+            direction: rtl;
+            font-size: 0.75rem;
+            color: #a8ffd6;
+            margin-bottom: 5px;
+            font-family: sans-serif;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.4); border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Aero Bubbles -->
+    <div class="aero-orb orb-1"></div>
+    <div class="aero-orb orb-2"></div>
+
+    <!-- Calculator Body -->
+    <div class="calculator">
+        <div class="calc-header">
+            <h2>Aero Math v2.0</h2>
+            <span class="badge">Frutiger Aero</span>
+        </div>
+
+        <!-- Display Screen -->
+        <div class="screen">
+            <div class="expression" id="expression"></div>
+            <div class="result" id="result">0</div>
+        </div>
+
+        <!-- Keypad Grid -->
+        <div class="keypad">
+            <!-- Row 1 -->
+            <button class="btn btn-clear" onclick="clearAll()">AC</button>
+            <button class="btn btn-clear" onclick="deleteLast()">DEL</button>
+            <button class="btn btn-sci" onclick="appendOp('%')">%</button>
+            <button class="btn btn-sci" onclick="appendFunc('Math.sin(')">sin</button>
+            <button class="btn btn-sci" onclick="appendFunc('Math.cos(')">cos</button>
+
+            <!-- Row 2 -->
+            <button class="btn btn-sci" onclick="appendFunc('Math.tan(')">tan</button>
+            <button class="btn btn-sci" onclick="appendFunc('Math.sqrt(')">√</button>
+            <button class="btn btn-sci" onclick="appendOp('**')">x²</button>
+            <button class="btn btn-sci" onclick="appendValue('(')">(</button>
+            <button class="btn btn-sci" onclick="appendValue(')')">)</button>
+
+            <!-- Row 3 -->
+            <button class="btn" onclick="appendValue('7')">7</button>
+            <button class="btn" onclick="appendValue('8')">8</button>
+            <button class="btn" onclick="appendValue('9')">9</button>
+            <button class="btn btn-op" onclick="appendOp('/')">÷</button>
+            <button class="btn btn-sci" onclick="appendValue('Math.PI')">π</button>
+
+            <!-- Row 4 -->
+            <button class="btn" onclick="appendValue('4')">4</button>
+            <button class="btn" onclick="appendValue('5')">5</button>
+            <button class="btn" onclick="appendValue('6')">6</button>
+            <button class="btn btn-op" onclick="appendOp('*')">×</button>
+            <button class="btn btn-sci" onclick="appendFunc('Math.log10(')">log</button>
+
+            <!-- Row 5 -->
+            <button class="btn" onclick="appendValue('1')">1</button>
+            <button class="btn" onclick="appendValue('2')">2</button>
+            <button class="btn" onclick="appendValue('3')">3</button>
+            <button class="btn btn-op" onclick="appendOp('-')">-</button>
+
+            <!-- Row 6 -->
+            <button class="btn" onclick="appendValue('0')">0</button>
+            <button class="btn" onclick="appendValue('.')">.</button>
+            <button class="btn btn-op" onclick="appendOp('+')">+</button>
+            <button class="btn btn-equals" onclick="calculate()">=</button>
+        </div>
+
+        <!-- History Container -->
+        <div class="history-box">
+            <div class="history-title">سجل العمليات الأخيرة:</div>
+            <div id="historyList"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let exprEl = document.getElementById('expression');
+        let resEl = document.getElementById('result');
+        let historyEl = document.getElementById('historyList');
+        
+        let currentExpr = '';
+        let isEvaluated = false;
+
+        function updateScreen() {
+            // Pretty formatting for math display
+            let displayText = currentExpr
+                .replace(/Math.PI/g, 'π')
+                .replace(/Math.sin\(/g, 'sin(')
+                .replace(/Math.cos\(/g, 'cos(')
+                .replace(/Math.tan\(/g, 'tan(')
+                .replace(/Math.sqrt\(/g, '√(')
+                .replace(/Math.log10\(/g, 'log(')
+                .replace(/\*\*/g, '^')
+                .replace(/\*/g, '×')
+                .replace(/\//g, '÷');
+            
+            exprEl.innerText = displayText;
+        }
+
+        function appendValue(val) {
+            if (isEvaluated) {
+                if (!isNaN(val) || val === 'Math.PI') {
+                    currentExpr = '';
+                }
+                isEvaluated = false;
+            }
+            currentExpr += val;
+            updateScreen();
+        }
+
+        function appendOp(op) {
+            isEvaluated = false;
+            if (currentExpr === '' && op !== '-') return;
+            currentExpr += op;
+            updateScreen();
+        }
+
+        function appendFunc(func) {
+            if (isEvaluated) {
+                currentExpr = '';
+                isEvaluated = false;
+            }
+            currentExpr += func;
+            updateScreen();
+        }
+
+        function clearAll() {
+            currentExpr = '';
+            resEl.innerText = '0';
+            exprEl.innerText = '';
+            isEvaluated = false;
+        }
+
+        function deleteLast() {
+            if (isEvaluated) {
+                clearAll();
+                return;
+            }
+            // Smart delete for full functions
+            const functions = ['Math.sin(', 'Math.cos(', 'Math.tan(', 'Math.sqrt(', 'Math.log10(', 'Math.PI'];
+            let deleted = false;
+            for (let f of functions) {
+                if (currentExpr.endsWith(f)) {
+                    currentExpr = currentExpr.slice(0, -f.length);
+                    deleted = true;
+                    break;
+                }
+            }
+            if (!deleted) {
+                currentExpr = currentExpr.slice(0, -1);
+            }
+            updateScreen();
+        }
+
+        function calculate() {
+            if (!currentExpr) return;
+            try {
+                // Auto-close missing parentheses
+                let openParen = (currentExpr.match(/\(/g) || []).length;
+                let closeParen = (currentExpr.match(/\)/g) || []).length;
+                let sanitizedExpr = currentExpr;
+                
+                while (openParen > closeParen) {
+                    sanitizedExpr += ')';
+                    closeParen++;
+                }
+
+                // Evaluate expression safely
+                let evaluated = Function('"use strict"; return (' + sanitizedExpr + ')')();
+                
+                // Format precision
+                if (typeof evaluated === 'number') {
+                    evaluated = Number(evaluated.toFixed(8));
+                }
+
+                resEl.innerText = evaluated;
+                
+                // Add to history
+                addHistory(exprEl.innerText || currentExpr, evaluated);
+                
+                currentExpr = evaluated.toString();
+                isEvaluated = true;
+            } catch (error) {
+                resEl.innerText = 'خطأ رياضي';
+            }
+        }
+
+        function addHistory(expr, res) {
+            let item = document.createElement('div');
+            item.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+            item.style.padding = '2px 0';
+            item.innerText = `${expr} = ${res}`;
+            historyEl.prepend(item);
+            if (historyEl.children.length > 5) {
+                historyEl.removeChild(historyEl.lastChild);
+            }
+        }
+    </script>
+</body>
+</html>
