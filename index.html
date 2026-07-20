@@ -3,384 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liquid AI - الذكاء الاصطناعي السائل</title>
-    <!-- Google Fonts: Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>أهل البيت عليهم السلام - الموقع التعريفي</title>
+    <!-- استدعاء خطوط عربية من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #08090d;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --glass-glow: rgba(0, 210, 255, 0.15);
-            --accent-cyan: #00f2fe;
-            --accent-purple: #4facfe;
-            --accent-pink: #ff007f;
-            --text-main: #f0f3f8;
-            --text-muted: #a0a8c0;
+            --primary-color: #1b4332;
+            --accent-color: #d4af37;
+            --bg-light: #f8f9fa;
+            --text-dark: #2b2d42;
+            --white: #ffffff;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Cairo', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
         }
 
-        /* --- خلفية السوائل المتحركة (Liquid Background Blobs) --- */
-        .liquid-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-            filter: blur(80px);
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            animation: float 18s infinite ease-in-out alternate;
-            opacity: 0.7;
-        }
-
-        .blob-1 {
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, var(--accent-cyan) 0%, rgba(0,242,254,0) 70%);
-            top: -10%;
-            right: -5%;
-            animation-duration: 14s;
-        }
-
-        .blob-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #7928ca 0%, rgba(121,40,202,0) 70%);
-            bottom: -15%;
-            left: -10%;
-            animation-duration: 20s;
-        }
-
-        .blob-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, var(--accent-pink) 0%, rgba(255,0,127,0) 70%);
-            top: 40%;
-            left: 30%;
-            animation-duration: 16s;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(80px, 60px) scale(1.15) rotate(180deg); }
-            100% { transform: translate(-50px, 100px) scale(0.9) rotate(360deg); }
-        }
-
-        /* --- بطاقة الزجاج السائل (Liquid Glass Container) --- */
-        .glass-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 90%;
-            max-width: 900px;
-            height: 85vh;
-            background: var(--glass-bg);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.4),
-                inset 0 1px 1px rgba(255, 255, 255, 0.2);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transition: border 0.3s ease;
-        }
-
-        /* لمعة زجاجية حافة علوية */
-        .glass-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-        }
-
-        /* --- الهيدر --- */
+        /* الهيدر وشريط التنقل */
         header {
-            padding: 20px 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--glass-border);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .ai-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-cyan), #7928ca);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-        }
-
-        .logo-text {
-            font-size: 1.3rem;
+        .logo {
+            font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(90deg, #ffffff, var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-color);
         }
 
-        .status-badge {
-            background: rgba(0, 242, 254, 0.1);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            color: var(--accent-cyan);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+        .nav-links {
+            list-style: none;
             display: flex;
-            align-items: center;
-            gap: 8px;
+            gap: 1.5rem;
         }
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-cyan);
-            animation: pulse 2s infinite;
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.8); }
+        .nav-links a:hover {
+            color: var(--accent-color);
         }
 
-        /* --- منطقة الرسائل --- */
-        .chat-area {
-            flex: 1;
-            padding: 25px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            scroll-behavior: smooth;
+        /* قسم الواجهة Hero */
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(27, 67, 50, 0.85)), url('https://images.unsplash.com/photo-1542816417-0983cbe82752?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 1rem;
         }
 
-        .chat-area::-webkit-scrollbar {
-            width: 6px;
-        }
-        .chat-area::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
         }
 
-        .message {
-            max-width: 80%;
-            padding: 14px 20px;
-            border-radius: 20px;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            animation: fadeIn 0.4s ease-out forwards;
+        .quran-quote {
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            max-width: 800px;
+            margin: 1.5rem auto;
+            line-height: 2;
+            border-top: 1px solid var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+            padding: 1rem 0;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* الحاويات العامة */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
         }
 
-        .message.bot {
-            align-self: flex-start;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--glass-border);
-            border-top-right-radius: 4px;
-            color: var(--text-main);
-            backdrop-filter: blur(10px);
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
         }
 
-        .message.user {
-            align-self: flex-end;
-            background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(121, 40, 202, 0.2));
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            border-top-left-radius: 4px;
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto 0;
         }
 
-        /* --- حقل الإدخال الزجاجي --- */
-        .input-container {
-            padding: 20px 25px;
-            border-top: 1px solid var(--glass-border);
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.15);
+        /* شبكة البطاقات */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
-        .glass-input {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 14px 20px;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-color);
         }
 
-        .glass-input::placeholder {
-            color: var(--text-muted);
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        .glass-input:focus {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(0, 242, 254, 0.5);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
         }
 
-        .send-btn {
-            background: linear-gradient(135deg, var(--accent-cyan), #4facfe);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+        /* التذييل */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 3px solid var(--accent-color);
         }
 
-        .send-btn:hover {
-            transform: translateY(-2deg) scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
-        }
-
-        .send-btn:active {
-            transform: translateY(0);
-        }
-
-        .send-btn svg {
-            fill: #08090d;
-            width: 20px;
-            height: 20px;
-            transform: rotate(180deg);
+        /* تجاوب الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .quran-quote {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- خلفية الفقاعات السائلة المتحركة -->
-    <div class="liquid-container">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
+    <!-- الترويسة وشريط التنقل -->
+    <header>
+        <nav>
+            <div class="logo">أهل البيت (ع)</div>
+            <ul class="nav-links">
+                <li><a href="#about">عن أهل البيت</a></li>
+                <li><a href="#figures">الشخصيات المباركة</a></li>
+                <li><a href="#values">القيم والأخلاق</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- البطاقة الزجاجية الرئيسية -->
-    <div class="glass-wrapper">
-        <header>
-            <div class="logo-group">
-                <div class="ai-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
-                        <path d="M12 6v12M6 12h12"/>
-                    </svg>
-                </div>
-                <div class="logo-text">Aether Liquid AI</div>
-            </div>
-            <div class="status-badge">
-                <span class="status-dot"></span>
-                متصل بالشبكة
-            </div>
-        </header>
+    <!-- قسم الواجهة الرئيسي -->
+    <section class="hero">
+        <h1>موقع أهل البيت عليهم السلام</h1>
+        <p>بوابة تعريفية بسيرة، ومكانة، وأخلاق آل بيت النبي محمد (صلى الله عليه وآله وسلم)</p>
+        <div class="quran-quote">
+            «إِنَّمَا يُرِيدُ اللَّهُ لِيُذْهِبَ عَنكُمُ الرِّجْسَ أَهْلَ الْبَيْتِ وَيُطَهِّرَكُمْ تَطْهِيرًا»
+        </div>
+    </section>
 
-        <!-- منطقة المحادثة -->
-        <div class="chat-area" id="chatArea">
-            <div class="message bot">
-                أهلاً بك! أنا نظام الذكاء الاصطناعي بواجهة الزجاج السائل (Liquid Glass). كيف يمكنني مساعدتك اليوم؟
+    <!-- قسم التعريف -->
+    <section id="about" class="container">
+        <h2 class="section-title">مكانة أهل البيت</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #555;">
+            يحظى أهل البيت بمكانة رفيعة في الأمة الإسلامية؛ فهم القدوة في العلم والتقوى والأخلاق. حث النبي الأكرم على الاقتداء بهديهم والتمسك بسيرتهم العطرة لكونهم منبعاً للحكمة والقيم الإنسانية السامية.
+        </p>
+    </section>
+
+    <!-- قسم البطاقات التعريفية -->
+    <section id="figures" class="container">
+        <h2 class="section-title">الشخصيات المباركة</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>النبي محمد (ص)</h3>
+                <p>خاتم الأنبياء والمرسلين، ورحمة الله للعالمين، المبعوث بمكارم الأخلاق ومخرج البشرية من الظلمات إلى النور.</p>
+            </div>
+            <div class="card">
+                <h3>الإمام علي بن أبي طالب (ع)</h3>
+                <p>أول من آمن من الرجال، وباب مدينة علم النبي، وصاحب المواقف المشهودة في العدل والحكمة والحرية.</p>
+            </div>
+            <div class="card">
+                <h3>السيدة فاطمة الزهراء (ع)</h3>
+                <p>بضعة الرسول وسيدة نساء العالمين، العابدة الزاهدة والأسوة الحسنة في الصبر والفضيلة.</p>
+            </div>
+            <div class="card">
+                <h3>الإمام الحسن المجتبى (ع)</h3>
+                <p>سبط النبي الأكبر، وسيد شباب أهل الجنة، عُرف بالحلم والكرم الفائق والحكمة في حفظ دماء المسلمين.</p>
+            </div>
+            <div class="card">
+                <h3>الإمام الحسين الشهيد (ع)</h3>
+                <p>سبط النبي الأصغر، رمز الفداء والحرية، والداعي لإصلاح أمة جده وإرساء قواعد العدالة والمبدأ.</p>
             </div>
         </div>
+    </section>
 
-        <!-- حقل الإدخال -->
-        <div class="input-container">
-            <input type="text" class="glass-input" id="userInput" placeholder="اكتب سؤالك هنا..." onkeydown="handleKeyPress(event)">
-            <button class="send-btn" onclick="sendMessage()">
-                <svg viewBox="0 0 24 24">
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
+    <!-- التذييل -->
+    <footer>
+        <p>موقع تعريفي بأهل البيت عليهم السلام - نفع الله به الجميع</p>
+    </footer>
 
-    <script>
-        const chatArea = document.getElementById('chatArea');
-        const userInput = document.getElementById('userInput');
-
-        // أفكار إجابات تجريبية محاكية للذكاء الاصطناعي
-        const botResponses = [
-            "تأثير Liquid Glass يعتمد على دمج الفلاتر الضوئية `backdrop-filter` مع خلفيات متدرجة متحركة وعاكسة للضوء.",
-            "تمت معالجة طلبك بنجاح! يمكننا دمج واجهات برمجة التطبيقات (API) الخاصة بـ OpenAI أو Gemini بسهولة في هذا النموذج.",
-            "هذا التصميم العصراني يمنح المستخدم إحساساً بالعمق والفخامة بفضل إضاءة الـ Neon والتأطير الزجاجي الناعم.",
-            "أنا جاهز لتحليل البيانات وإنجاز مهامك البرمجية أو التصميمية بأعلى كفاءة!"
-        ];
-
-        function sendMessage() {
-            const text = userInput.value.trim();
-            if (text === "") return;
-
-            // إضافة رسالة المستخدم
-            appendMessage(text, 'user');
-            userInput.value = '';
-
-            // التمرير إلى الأسفل
-            chatArea.scrollTop = chatArea.scrollHeight;
-
-            // محاكاة استجابة الذكاء الاصطناعي بعد ثانية
-            setTimeout(() => {
-                const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
-                appendMessage(randomResponse, 'bot');
-                chatArea.scrollTop = chatArea.scrollHeight;
-            }, 800);
-        }
-
-        function appendMessage(text, sender) {
-            const msgDiv = document.createElement('div');
-            msgDiv.classList.add('message', sender);
-            msgDiv.textContent = text;
-            chatArea.appendChild(msgDiv);
-        }
-
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
-    </script>
 </body>
 </html>
