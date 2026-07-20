@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموسوعة الكبرى لسيرة واستشهاد أهل البيت عليهم السلام</title>
+    <!-- خطوط عربية فاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;900&family=Reem+Kufi:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #071a10;
+            --bg-secondary: #0d2b1d;
+            --emerald-light: #184e35;
+            --gold-main: #d4af37;
+            --gold-light: #f7e7b4;
+            --gold-dark: #997a15;
+            --text-light: #f8f9fa;
+            --text-sub: #d1d5db;
+            --card-bg: #0f3322;
+            --shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --border-gold: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            line-height: 1.9;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+
+        /* --- الهيدر الفاخر --- */
+        header {
+            background: linear-gradient(180deg, rgba(7, 26, 16, 0.98), rgba(13, 43, 29, 0.95));
+            border-bottom: 2px solid var(--gold-main);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* --- الهيكل الرئيسي (جانبي + محتوى) --- */
+        .layout-wrapper {
+            max-width: 1400px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            padding: 0 1.5rem;
+        }
+
+        /* القائمة الجانبية للتنقل السريع */
+        .sidebar {
+            background: var(--bg-secondary);
+            border: var(--border-gold);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: sticky;
+            top: 90px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar h3 {
+            font-family: 'Amiri', serif;
+            color: var(--gold-main);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--gold-dark);
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-menu a {
+            color: var(--text-sub);
+            text-decoration: none;
+            display: block;
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-menu a:hover {
+            background: var(--emerald-light);
+            color: var(--gold-light);
+            padding-right: 1.2rem;
+        }
+
+        /* المنطقة المركزية */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* قسم الترحيب */
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(24, 78, 53, 0.6), rgba(7, 26, 16, 0.9)),
+                        url('https://images.unsplash.com/photo-1542816417-0983cbe82752?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            border: var(--border-gold);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-banner h1 {
+            font-family: 'Amiri', serif;
+            font-size: 3.2rem;
+            color: var(--gold-main);
+            margin-bottom: 1rem;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* بطاقة الشخصيات الإشراقية */
+        .figure-section {
+            background: var(--card-bg);
+            border: var(--border-gold);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            scroll-margin-top: 100px;
+        }
+
+        .figure-header {
+            border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .figure-title {
+            font-family: 'Amiri', serif;
+            font-size: 2.4rem;
+            color: var(--gold-main);
+        }
+
+        .figure-subtitle {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .badge-number {
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-dark));
+            color: var(--bg-primary);
+            font-weight: 900;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+
+        /* ميتا المعلومات (الولادة، الاستشهاد، المرقَد) */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: rgba(7, 26, 16, 0.6);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border-right: 4px solid var(--gold-main);
+        }
+
+        .meta-item {
+            font-size: 0.95rem;
+        }
+
+        .meta-item strong {
+            color: var(--gold-main);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* نصوص السيرة والاستشهاد */
+        .content-box {
+            margin-bottom: 2rem;
+        }
+
+        .content-box h4 {
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-box p {
+            color: var(--text-sub);
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 2;
+            margin-bottom: 1rem;
+        }
+
+        .martyrdom-box {
+            background: rgba(139, 0, 0, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .martyrdom-box h4 {
+            color: #f87171;
+        }
+
+        .quote-box {
+            background: rgba(212, 175, 55, 0.08);
+            border-right: 3px solid var(--gold-main);
+            padding: 1.2rem 1.8rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        /* التذييل */
+        footer {
+            background: #04100a;
+            border-top: 2px solid var(--gold-main);
+            text-align: center;
+            padding: 3rem 1.5rem;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* تجاوب الشاشات */
+        @media (max-width: 992px) {
+            .layout-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الترويسة -->
+    <header>
+        <div class="header-container">
+            <div class="brand">
+                🕌 الموسوعة الكبرى لأهل البيت عليهم السلام
+            </div>
+            <div style="color: var(--gold-light); font-weight: 600;">
+                السيرة الشاملة وقصص الاستشهاد
+            </div>
+        </div>
+    </header>
+
+    <!-- الهيكل الرئيسي -->
+    <div class="layout-wrapper">
+        
+        <!-- القائمة الجانبية -->
+        <aside class="sidebar">
+            <h3>📌 الفهرس السريع</h3>
+            <ul class="sidebar-menu">
+                <li><a href="#prophet">الرسول الأعظم (ص)</a></li>
+                <li><a href="#fatima">السيدة فاطمة الزهراء (ع)</a></li>
+                <li><a href="#imam1">1. الإمام علي بن أبي طالب (ع)</a></li>
+                <li><a href="#imam2">2. الإمام الحسن المجتبى (ع)</a></li>
+                <li><a href="#imam3">3. الإمام الحسين الشهيد (ع)</a></li>
+                <li><a href="#imam4">4. الإمام علي السجاد (ع)</a></li>
+                <li><a href="#imam5">5. الإمام محمد الباقر (ع)</a></li>
+                <li><a href="#imam6">6. الإمام جعفر الصادق (ع)</a></li>
+                <li><a href="#imam7">7. الإمام موسى الكاظم (ع)</a></li>
+                <li><a href="#imam8">8. الإمام علي الرضا (ع)</a></li>
+                <li><a href="#imam9">9. الإمام محمد الجواد (ع)</a></li>
+                <li><a href="#imam10">10. الإمام علي الهادي (ع)</a></li>
+                <li><a href="#imam11">11. الإمام الحسن العسكري (ع)</a></li>
+                <li><a href="#imam12">12. الإمام المهدي المنتظر (ع)</a></li>
+            </ul>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content">
+
+            <!-- الواجهة -->
+            <div class="hero-banner">
+                <h1>موسوعة آل محمد الأطهار</h1>
+                <p>سجل تاريخي وفكري متكامل يرصد الحياة، والعطاء، والشهادة لرسول الله وأهل بيته المدافعين عن الحق والعدالة الإنسانية.</p>
+            </div>
+
+            <!-- النبي محمد -->
+            <article id="prophet" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">النبي محمد بن عبد الله (صلى الله عليه وآله)</h2>
+                        <div class="figure-subtitle">خاتم الأنبياء والمرسلين وسيد الكائنات</div>
+                    </div>
+                    <span class="badge-number">المصطفى</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 17 ربيع الأول - مكة المكرمة</div>
+                    <div class="meta-item"><strong>الوفاة والشهادة:</strong> 28 صفر 11 هـ</div>
+                    <div class="meta-item"><strong>العمر الشريف:</strong> 63 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> المدينة المنورة</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>بعثه الله رحمة للعالمين ليعيد بناء الإنسان والمجتمع على أساس التوحيد، الأخلاق، والعدالة. أقام دولة الإسلام الأول في المدينة المنورة وقاد تحولاً فكرياً واجتماعياً غير وجه التاريخ الإنساني.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد والوفاة</h4>
+                    <p>بعد إتمام حجة الوداع وإعلان ولاية أمير المؤمنين علي (ع) في غدير خم، ألمّ المرض بالنبي (ص). وتذكر المصادر المتواترة أنه عانى من آثار السم الذي قُدم له في خيبر. وفي ألايامه الأخيرة، اشتد به الوجع وهو يوصي بالثقلين (كتاب الله وعترته)، حتى فاضت روحه الطاهرة في أحضان الإمام علي (ع) بالمدينة المنورة.</p>
+                </div>
+                <div class="quote-box">
+                    «إني تارك فيكم الثقلين: كتاب الله، وعترتي أهل بيتي، ما إن تمسكتم بهما لن تضلوا بعدي أبداً».
+                </div>
+            </article>
+
+            <!-- السيدة فاطمة الزهراء -->
+            <article id="fatima" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">السيدة فاطمة الزهراء (عليها السلام)</h2>
+                        <div class="figure-subtitle">سيدة نساء العالمين وبضعة المصطفى</div>
+                    </div>
+                    <span class="badge-number">الزهراء</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 20 جمادى الآخرة - مكة</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 3 جمادى الآخرة 11 هـ</div>
+                    <div class="meta-item"><strong>العمر الشريف:</strong> 18 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> خفي بالمدينة المنورة</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>أم أبيها، والأسوة الحسنة لكل أحرار العالم. كانت المدافعة الأولى عن حق الإمامة والعدالة بعد رحيل رسول الله (ص)، وجسدت أرقى معاني العبادة والزهد والوعي السياسي والرسالي.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>عاشت السيدة الزهراء (ع) آلاماً شديدة بعد وفاة أبيها المصطفى نتيجة للأحداث السياسية وضغط الأحداث على دارها، مما أدى إلى كسر ضلعها وإسقاط جنينها (المحسن). مرضت مرضاً شديداً وأوصت زوجها الإمام علي (ع) بأن يدفنها ليلاً وسراً لتعبر عن مظلوميتها التاريخية، وتوفيت وهي في ذروة شبابها.</p>
+                </div>
+                <div class="quote-box">
+                    «جعَلَ اللهُ الإيمانَ تَطهيرًا لَكُم مِنَ الشِّركِ، وَالصَّلاةَ تَنزيهًا لَكُم عَنِ الكِبرِ».
+                </div>
+            </article>
+
+            <!-- 1. الإمام علي -->
+            <article id="imam1" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">1. الإمام علي بن أبي طالب (عليه السلام)</h2>
+                        <div class="figure-subtitle">أمير المؤمنين ويعسوب الدين وباب مدينة العلم</div>
+                    </div>
+                    <span class="badge-number">01</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 13 رجب - جوف الكعبة</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 21 رمضان 40 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 30 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> النجف الأشرف - العراق</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>أول من آمن بالرسول، وأقضاهم، وأعلمهم. تولى الخلافة وحكم بالعدل المطلق، فلم يفضل عربياً على عجمي ولا غنياً على فقير، تاركاً أرقى منهج إنساني في كتاب "نهج البلاغة".</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>في صبيحة اليوم التاسع عشر من شهر رمضان سنة 40 هـ، وأثناء قيامه بصلاة الفجر في محراب مسجد الكوفة، ضربه الشقي عبد الرحمن بن ملجم بسيف مسموم على رأسه الشريف. أقام الإمام ثلاثة أيام يعاني من أثر السم وهو يوصي أبناءه بالحلم، والعدل، وحسن معاملة قاتله، حتى فاضت روحه المباركة ليلة 21 رمضان وهاتف السماء ينادي: «تهدمت والله أركان الهدى».</p>
+                </div>
+                <div class="quote-box">
+                    «فزت ورب الكعبة» .. «الناس صنفان: إما أخ لك في الدين، أو نظير لك في الخلق».
+                </div>
+            </article>
+
+            <!-- 2. الإمام الحسن -->
+            <article id="imam2" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">2. الإمام الحسن بن علي (عليه السلام)</h2>
+                        <div class="figure-subtitle">المجتبى وكريم أهل البيت وسيد شباب أهل الجنة</div>
+                    </div>
+                    <span class="badge-number">02</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 15 رمضان 3 هـ - المدينة</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 7 صفر 50 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 10 سنين</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> البقيع - المدينة المنورة</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>سبط النبي الأكبر، اشتهر بالحلم العظيم والكرم الفائق حيث تقاسم أمواله مع الفقراء مراراً. قاد الأمة بحكمة بالغة وحقن دماء المسلمين بصلحه التاريخي الذي كشف زيف الحكم الأموي ممهداً لنهضة كربلاء.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>دس معاوية بن أبي سفيان السم للإمام الحسن (ع) عبر جعدة بنت الأشعث لقاء أموال ووعود زائفة. تناول الإمام السم وتقطعت كبده الشريفة وكان يتقيأ دماً في طشت، ودعا أخاه الحسين (ع) وأوصاه بالخلافة وإدارة شؤون الأمة، وعند تشييع جنازته ليدفن جوار جده الرسول، رميت جنازته بالنظام والسهام حتى دُفن أخيراً بالبقيع.</p>
+                </div>
+                <div class="quote-box">
+                    «أحسن الحسن الخلق الحسن» .. «لا تعجل بالذنب عقوبة واجعل بينهما للاعتذار طريقاً».
+                </div>
+            </article>
+
+            <!-- 3. الإمام الحسين -->
+            <article id="imam3" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">3. الإمام الحسين بن علي (عليه السلام)</h2>
+                        <div class="figure-subtitle">سيد الشهداء وأبا عبد الله وثائر كربلاء</div>
+                    </div>
+                    <span class="badge-number">03</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 3 شعبان 4 هـ - المدينة</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 10 محرم 61 هـ (عاشوراء)</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 11 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> كربلاء المقدسة - العراق</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>سبط النبي الأصغر ورمز الحرية الإنسانية عبر التاريخ. رفض بيعة الطغيان والانحراف الوراثي، وخرج بـ "إني لم أخرج أشراً ولا بطراً وإنما خرجت لطلب الإصلاح في أمة جدي".</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>في يوم العاشر من محرم سنة 61 هـ في أرض كربلاء، حوصر الإمام الحسين وأهل بيته وأصحابه البالغ عددهم العشرات من قبل جيش زاد عن ثلاثين ألفاً. وبعد عطش شديد واستشهاد أصحابه وأهل بيته واحداً تلو الآخر (بمن فيهم أخوه العباس ورضيعه علي الأصغر)، قاتل الإمام الحسين فريداً بشجاعة أذهلت الأعداء، حتى احتز رأسه الشريف الشمر بن ذي الجوشن، ورُفعت الرؤوس على الرماح وسُبيت النساء إلى الكوفة والشام.</p>
+                </div>
+                <div class="quote-box">
+                    «هيهات منا الذلة» .. «إن لم يكن لكم دين وكنتم لا تخافون المعاد فكونوا أحراراً في دنياكم».
+                </div>
+            </article>
+
+            <!-- 4. الإمام السجاد -->
+            <article id="imam4" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">4. الإمام علي بن الحسين (عليه السلام)</h2>
+                        <div class="figure-subtitle">زين العابدين والسجاد وسيد الساجدين</div>
+                    </div>
+                    <span class="badge-number">04</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 5 شعبان 38 هـ</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 25 محرم 95 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 34 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> البقيع - المدينة المنورة</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>شهد فاجعة كربلاء وكان مريضاً فحمى الله به سلالة الإمامة. قاد النهضة الفكرية والروحية عبر أسلوب الدعاء والخطب البليغة، وصاغ "الصحيفة السجادية" و"رسالة الحقوق".</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>تخوف الحكام الأمويون (الوليد بن عبد الملك) من الامتداد الجماهيري والروحي للإمام السجاد وتبجيل الناس له. فتم اغتياله بسمّ قتال أُرسل إليه ونُفذ بلمسات خفية. قضى الإمام أياماً يصارع ألم السم وهو يستغفر الله ويوصي ولده الباقر (ع) بحفظ العلم الشريف، ودُفن بالبقيع.</p>
+                </div>
+                <div class="quote-box">
+                    «أشد ساعات ابن آدم ثلاث ساعات: الساعة التي يرى فيها ملك الموت، والساعة التي يقوم فيها من قبره، والساعة التي يقف فيها بين يدي الله».
+                </div>
+            </article>
+
+            <!-- 5. الإمام الباقر -->
+            <article id="imam5" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">5. الإمام محمد بن علي (عليه السلام)</h2>
+                        <div class="figure-subtitle">الباقر وباقر علوم النبيين</div>
+                    </div>
+                    <span class="badge-number">05</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 1 رجب 57 هـ - المدينة</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 7 ذو الحجة 114 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 19 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> البقيع - المدينة المنورة</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>سُمي الباقر لأنه بقر العلم بقراً أي شقه وتوسع فيه. أسس المدرس الفقهية والكلامية الكبرى بالمدينة المنورة التي خَرّجت أساطين العلماء والرواة.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>استشهد الإمام الباقر (ع) بالسم في عهد هشام بن عبد الملك، حيث أُسرّ السم إليه عبر سرج دابة مسموم أُركب عليها أثناء تواجده أو تنقله، فتغلغل السم في جسده الطاهر ومرض لأيام قلائل حتى التحق بالرفيق الأعلى.</p>
+                </div>
+                <div class="quote-box">
+                    «ما شيب شيء بشيء أفضل من حلم بعلم» .. «إن الله عز وجل يبغض الفاحش المتفحش».
+                </div>
+            </article>
+
+            <!-- 6. الإمام الصادق -->
+            <article id="imam6" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">6. الإمام جعفر بن محمد (عليه السلام)</h2>
+                        <div class="figure-subtitle">الصادق ورئيس المذهب وجعفر الأمين</div>
+                    </div>
+                    <span class="badge-number">06</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 17 ربيع الأول 83 هـ</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 25 شوال 148 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 34 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> البقيع - المدينة المنورة</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>توسعت في عهده الحركة العلمية لتشمل الطبيعيات، الفلك، الكيمياء (استاذه جابر بن حيان)، والفقه والفلسفة، ودرس في جامعته أكثر من 4000 عالم ومحدث من المذاهب كافة.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>ضاق أبا جعفر المنصور العباسي ذرعاً بالشعبية العلمية والروحية الهائلة للإمام الصادق، فأمر بوضع السم له في عنب أو عنب مسموم. عانى الإمام من آلام شديدة في معيدته حتى تقطعت أحشاؤه وودع أهله وأصحابه بصلابة وثبات.</p>
+                </div>
+                <div class="quote-box">
+                    «لا ينال شفاعتنا من استخف بالصلاة» .. «المؤمن من إذا غضب لم يخرجه غضبه من حق».
+                </div>
+            </article>
+
+            <!-- 7. الإمام الكاظم -->
+            <article id="imam7" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">7. الإمام موسى بن جعفر (عليه السلام)</h2>
+                        <div class="figure-subtitle">الكاظم وباب الحوائج والعبد الصالح</div>
+                    </div>
+                    <span class="badge-number">07</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 7 صفر 128 هـ - الأبواء</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 25 رجب 183 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 35 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> الكاظمية المقدسة - بغداد</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>عُرف بكظم الغيظ والعبادة الطويلة حتى سُمي راهب آل محمد. قضى جانباً كبيراً من حياته في مطامير السجون العباسية مظلوماً صابراً.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>أمر هارون الرشيد بنقل الإمام بين عدة سجون (البصرة، بغداد) وأخيراً سجن السندي بن شاهك ببغداد. أمر السندي بتقديم رطب مسموم للإمام الكاظم (ع)، فأكل منه الإمام وظل يصارع السم ثلاثة أيام مقيداً بالحديد والقيود، واستشهد على جسر الرصافة بضعة أيام لتغطية الجريمة قبل أن يُشيع بتظاهرة شعبية جارفة إلى مقبرة قريش.</p>
+                </div>
+                <div class="quote-box">
+                    «ليس منا من لم يحاسب نفسه في كل يوم» .. «أداء الأمانة والصدق يجلبان الرزق».
+                </div>
+            </article>
+
+            <!-- 8. الإمام الرضا -->
+            <article id="imam8" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">8. الإمام علي بن موسى (عليه السلام)</h2>
+                        <div class="figure-subtitle">الرضا وعالم آل محمد وغريب طوس</div>
+                    </div>
+                    <span class="badge-number">08</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 11 ذو القعدة 148 هـ</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 17 صفر 203 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 20 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> مشهد (طوس) - إيران</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>عالم آل محمد الذي أقام المناظرات الفلسفية والدينية الكبرى مع علماء كافة الديانات (اليهود، النصارى، الصابئة، الفلاسفة) وصرعهم بالدليل والحجة في مجلس المأمون.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>بعد أن رأى المأمون العباسي استثمار الإمام لولايات العهد بنشر الفكر والوعي، خشي على عرشه ودس السم للإمام الرضا في عنب أو رمان مسموم. قيل إن الإمام قام ومشى وهو يجر رداءه يتلو آيات الاسترجاع، وسقط صريعاً بالسم في أرض طوس الغريبة.</p>
+                </div>
+                <div class="quote-box">
+                    «صديق كل امرئ عقله وعدوه جهله» .. «التودد إلى الناس نصف العقل».
+                </div>
+            </article>
+
+            <!-- 9. الإمام الجواد -->
+            <article id="imam9" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">9. الإمام محمد بن علي (عليه السلام)</h2>
+                        <div class="figure-subtitle">الجواد والتقي وباب المراد</div>
+                    </div>
+                    <span class="badge-number">09</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 10 رجب 195 هـ</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 29 ذو القعدة 220 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 17 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> الكاظمية المقدسة - بغداد</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>أصغر الأئمة سناً عند الإمامة (7 سنوات)، أبهر العلماء وقضاة العصر في مناظراته العظيمة وقدم نموذجاً للإمامة الإلهية المبكرة.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>استدعي الإمام إلى بغداد في عهد المعتصم العباسي الذي تحين الفرص للتخلص منه، فأغرى زوجته أم الفضل (ابنة المأمون) بدس السم للإمام في عنب، فاستشهد وهو في شبابه الغض بعمر 25 سنة عطشاناً بعليته في بغداد.</p>
+                </div>
+                <div class="quote-box">
+                    «الثقة بالله تعالى ثمن لكل غال، وسلم إلى كل عال» .. «عنوان صحيفة المؤمن حسن خلقه».
+                </div>
+            </article>
+
+            <!-- 10. الإمام الهادي -->
+            <article id="imam10" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">10. الإمام علي بن محمد (عليه السلام)</h2>
+                        <div class="figure-subtitle">الهادي والنقي والمترفع عن الدنيا</div>
+                    </div>
+                    <span class="badge-number">10</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 15 ذو الحجة 212 هـ</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 3 رجب 254 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 33 سنة</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> سامراء المقدسة - العراق</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>عاش فرض الإقامة الجبرية في عسكر سامراء، وربى جيل وكلاء الأمة ورسخ المفاهيم الكبرى من خلال النصوص المعرفية والزيارات التفسيرية.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>اغتيل الإمام الهادي (ع) بالسم في عهد المعتز العباسي بعد سنوات طويلة من التضييق والمداهمات الليلية لداره في سامراء. قضى مسموماً ودفن في بيته بسامراء.</p>
+                </div>
+                <div class="quote-box">
+                    «الدنيا سوق ربح فيها قوم وخسر آخرون» .. «من هانت عليه نفسه فلا تأمن شره».
+                </div>
+            </article>
+
+            <!-- 11. الإمام الحسن العسكري -->
+            <article id="imam11" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">11. الإمام الحسن بن علي (عليه السلام)</h2>
+                        <div class="figure-subtitle">العسكري والزكي والدليل على الموعود</div>
+                    </div>
+                    <span class="badge-number">11</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 8 ربيع الثاني 232 هـ</div>
+                    <div class="meta-item"><strong>الشهادة:</strong> 8 ربيع الأول 260 هـ</div>
+                    <div class="meta-item"><strong>مدة الإمامة:</strong> 6 سنين</div>
+                    <div class="meta-item"><strong>المرقد المقدس:</strong> سامراء المقدسة - العراق</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والمكانة</h4>
+                    <p>والد الإمام المنتظر، أدار شؤون الأمة في ظل حصار عسكري مشدد وسجن مستمر، ومهد القواعد الشعبية لمرحلة الغيبة والانقطاع المباشر.</p>
+                </div>
+                <div class="content-box martyrdom-box">
+                    <h4>🖤 قصة الاستشهاد</h4>
+                    <p>دس المعتمد العباسي السم للإمام العسكري في طعامه أو شرابه. مرض الإمام أياماً متوالية واشتدت به العلة حتى استشهد بعمر 28 سنة، وحاول السلطان العباسي التغطية بإحضار الأطباء والقضاة ليدعوا أنها وفاة طبيعية.</p>
+                </div>
+                <div class="quote-box">
+                    «ما ترك الحق عزيز إلا ذل، ولا أخذ به ذليل إلا عز» .. «خير إخوانك من نسي ذنبك».
+                </div>
+            </article>
+
+            <!-- 12. الإمام المهدي -->
+            <article id="imam12" class="figure-section">
+                <div class="figure-header">
+                    <div>
+                        <h2 class="figure-title">12. الإمام محمد بن الحسن (عجل الله فرجه)</h2>
+                        <div class="figure-subtitle">المهدي المنتظر والقائم والحجة بن الحسن</div>
+                    </div>
+                    <span class="badge-number">12</span>
+                </div>
+                <div class="meta-grid">
+                    <div class="meta-item"><strong>الولادة المباركة:</strong> 15 شعبان 255 هـ - سامراء</div>
+                    <div class="meta-item"><strong>الحالة الحالية:</strong> حي يرزق في الغيبة الإلهية</div>
+                    <div class="meta-item"><strong>الوعد الإلهي:</strong> الظهور لإقامة العدل الشامل</div>
+                    <div class="meta-item"><strong>المقر الموعود:</strong> الكوفة - العراق</div>
+                </div>
+                <div class="content-box">
+                    <h4>📜 السيرة والغاية الإلهية</h4>
+                    <p>خاتم الأوصياء والأئمة الاثني عشر. بشر به جميع الأنبياء والرسل ليكون مصلح البشرية الأعظم الذي يملأ الأرض قسطاً وعدلاً بعدما ملئت ظلماً وجوراً، ويحقق حلم الأنبياء في إقامة الدولة العادلة.</p>
+                </div>
+                <div class="quote-box">
+                    «أكثروا الدعاء بتعجيل الفرج فإن ذلك فرجكم» .. «إنّي أمانٌ لأهلِ الأرضِ كما أنَّ النّجومَ أمانٌ لأهلِ السَّماءِ».
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <!-- التذييل -->
+    <footer>
+        <p>الموسوعة الرقمية الكبرى لسيرة واستشهاد أهل البيت عليهم السلام</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #888;">مصممة بأعلى التقنيات لخدمة المعرفة الفكرية والإسلامية الأصيلة</p>
+    </footer>
+
+</body>
+</html>
