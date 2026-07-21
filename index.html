@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نور العترة | موقع تعريفي بأهل البيت (عليهم السلام)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --islamic-green: #064e3b;
+            --gold: #d97706;
+            --light-gold: #fde68a;
+            --text-light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .amiri-font {
+            font-family: 'Amiri', serif;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(to right, var(--islamic-green), var(--primary-dark));
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            background-color: var(--islamic-green);
+            background-blend-mode: overlay;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--light-gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 4rem 0 2rem;
+        }
+
+        /* Infallibles Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .card h3 {
+            color: var(--light-gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-details {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            text-align: right;
+        }
+
+        .btn {
+            background-color: var(--gold);
+            color: var(--primary-dark);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--light-gold);
+        }
+
+        /* Extra Religious Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+            margin-bottom: 4rem;
+        }
+
+        .feature-box {
+            background: var(--islamic-green);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--gold);
+        }
+
+        .feature-box i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--islamic-green);
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid var(--gold);
+            margin-top: 4rem;
+        }
+
+        /* Modal for Stories (Hidden by default) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: var(--primary-dark);
+            border: 2px solid var(--gold);
+            padding: 2rem;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px; left: 20px;
+            font-size: 2rem;
+            color: var(--gold);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo amiri-font">نور العترة</div>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#infallibles">المعصومون الـ 14</a></li>
+                <li><a href="#library">المكتبة الإسلامية</a></li>
+                <li><a href="#prayer">أوقات الصلاة</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1 class="amiri-font">إِنَّمَا يُرِيدُ اللَّهُ لِيُذْهِبَ عَنكُمُ الرِّجْسَ أَهْلَ الْبَيْتِ وَيُطَهِّرَكُمْ تَطْهِيرًا</h1>
+        <p>موسوعة شاملة تُعنى بسيرة وحياة وتاريخ أهل بيت النبوة (عليهم السلام)، لتكون منارة للباحثين عن الحقائق والقصص والعبر المستلهمة من مسيرتهم العظيمة.</p>
+    </section>
+
+    <!-- Main Content: The 14 Infallibles -->
+    <section id="infallibles">
+        <h2 class="section-title">المعصومون الأربعة عشر (عليهم السلام)</h2>
+        <div class="grid-container" id="cards-container">
+            <!-- Cards will be generated here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Extra Features: Religious Sections -->
+    <section id="library">
+        <h2 class="section-title">بوابات إيمانية</h2>
+        <div class="features-grid">
+            <div class="feature-box">
+                <i class="fas fa-book-quran"></i>
+                <h3>القرآن الكريم</h3>
+                <p>تلاوات وتفاسير مستندة إلى روايات أهل البيت.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-hands-praying"></i>
+                <h3>مفاتيح الجنان</h3>
+                <p>أدعية، زيارات، ومناجاة لأيام الأسبوع والمناسبات.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-clock"></i>
+                <h3>أوقات الصلاة</h3>
+                <p>مواقيت الصلاة حسب التوقيت المحلي لمدينتك.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-question-circle"></i>
+                <h3>سؤال وجواب</h3>
+                <p>فتاوى واستفتاءات شرعية عقائدية وفقهية.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Detailed Story -->
+    <div class="modal" id="storyModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title" class="amiri-font" style="color: var(--gold); margin-bottom: 1rem;"></h2>
+            <div id="modal-body" style="line-height: 1.8; text-align: justify; overflow-y: auto; max-height: 60vh; padding-right: 15px;"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="amiri-font">نسألكم الدعاء | تم بناء هذا الموقع حباً وولاءً لأهل البيت (عليهم السلام)</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Array holding the data. You can expand this with thousands of words of text later!
+        const infallibles = [
+            {
+                name: "النبي محمد (ص)",
+                title: "خاتم الأنبياء والمرسلين",
+                birth: "17 ربيع الأول",
+                martyrdom: "28 صفر",
+                story: "ولد النبي محمد (ص) في مكة... (هنا يمكنك كتابة آلاف الكلمات عن سيرته، معاركه، واستشهاده، والأثر الذي تركه في البشرية)."
+            },
+            {
+                name: "فاطمة الزهراء (ع)",
+                title: "سيدة نساء العالمين",
+                birth: "20 جمادى الآخرة",
+                martyrdom: "3 جمادى الآخرة",
+                story: "بضعة المصطفى، وزوجة المرتضى... (أضف هنا تفاصيل حياتها، خطبتها الفدكية، وقصة استشهادها المظلومة)."
+            },
+            {
+                name: "الإمام علي بن أبي طالب (ع)",
+                title: "أمير المؤمنين",
+                birth: "13 رجب",
+                martyrdom: "21 رمضان",
+                story: "ولد في جوف الكعبة... استشهد في محراب الكوفة بسيف الغدر. أثره في العدالة والإنسانية لا يمحى."
+            },
+            {
+                name: "الإمام الحسن المجتبى (ع)",
+                title: "سبط رسول الله",
+                birth: "15 رمضان",
+                martyrdom: "7 صفر",
+                story: "كريم أهل البيت، قاد مسيرة الصلح لحفظ دماء المسلمين... استشهد مسموماً."
+            },
+            {
+                name: "الإمام الحسين (ع)",
+                title: "سيد الشهداء",
+                birth: "3 شعبان",
+                martyrdom: "10 محرم (عاشوراء)",
+                story: "قائد ثورة الطف الخالدة. استشهد في كربلاء لإنقاذ الإسلام من الانحراف الأموي."
+            },
+            {
+                name: "الإمام علي السجاد (ع)",
+                title: "زين العابدين",
+                birth: "5 شعبان",
+                martyrdom: "25 محرم",
+                story: "عاش فاجعة كربلاء، وحمل رسالتها. ترك لنا الصحيفة السجادية ورسالة الحقوق."
+            },
+            {
+                name: "الإمام محمد الباقر (ع)",
+                title: "باقر علوم النبيين",
+                birth: "1 رجب",
+                martyrdom: "7 ذو الحجة",
+                story: "أسس النهضة العلمية وفتح أبواب الفقه والعقائد للمسلمين."
+            },
+            {
+                name: "الإمام جعفر الصادق (ع)",
+                title: "رئيس المذهب",
+                birth: "17 ربيع الأول",
+                martyrdom: "25 شوال",
+                story: "تخرج من جامعته آلاف العلماء. أرسى قواعد الفقه الجعفري."
+            },
+            {
+                name: "الإمام موسى الكاظم (ع)",
+                title: "باب الحوائج",
+                birth: "7 صفر",
+                martyrdom: "25 رجب",
+                story: "قضى سنوات طويلة في طوامير السجون العباسية صابراً محتسباً، واستشهد مسموماً."
+            },
+            {
+                name: "الإمام علي الرضا (ع)",
+                title: "شمس الشموس",
+                birth: "11 ذو القعدة",
+                martyrdom: "آخر صفر",
+                story: "أُجبر على ولاية العهد. ناظر علماء الأديان والمذاهب وأثبت حق أهل البيت، دفن في طوس."
+            },
+            {
+                name: "الإمام محمد الجواد (ع)",
+                title: "باب المراد",
+                birth: "10 رجب",
+                martyrdom: "آخر ذي القعدة",
+                story: "تولى الإمامة في سن مبكرة جداً، وأذهل علماء عصره بعلمه الغزير."
+            },
+            {
+                name: "الإمام علي الهادي (ع)",
+                title: "النقي",
+                birth: "15 ذو الحجة",
+                martyrdom: "3 رجب",
+                story: "عاش في سامراء تحت الإقامة الجبرية، ومهد الطريق لعصر الغيبة."
+            },
+            {
+                name: "الإمام الحسن العسكري (ع)",
+                title: "الزكي",
+                birth: "8 ربيع الآخر",
+                martyrdom: "8 ربيع الأول",
+                story: "والد الإمام المهدي. عاش حصاراً شديداً واستشهد شاباً في سامراء."
+            },
+            {
+                name: "الإمام المهدي (عج)",
+                title: "صاحب العصر والزمان",
+                birth: "15 شعبان",
+                martyrdom: "غائب عن الأنظار (ينتظر الإذن الإلهي)",
+                story: "أمل المستضعفين ومقيم دولة العدل الإلهي في آخر الزمان. نسأل الله تعجيل فرجه."
+            }
+        ];
+
+        // Function to render cards dynamically
+        function renderCards() {
+            const container = document.getElementById('cards-container');
+            infallibles.forEach((person, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3 class="amiri-font">${person.name}</h3>
+                    <div class="card-details">
+                        <p><strong>اللقب:</strong> ${person.title}</p>
+                        <p><strong>الولادة:</strong> ${person.birth}</p>
+                        <p><strong>الاستشهاد:</strong> ${person.martyrdom}</p>
+                    </div>
+                    <button class="btn" onclick="openModal(${index})">اقرأ السيرة كاملة</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('storyModal');
+        
+        function openModal(index) {
+            const person = infallibles[index];
+            document.getElementById('modal-title').innerText = person.name;
+            document.getElementById('modal-body').innerText = person.story;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal if clicked outside the box
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Initialize the page
+        window.onload = renderCards;
+    </script>
+</body>
+</html>
