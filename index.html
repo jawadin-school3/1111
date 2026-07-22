@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حقيبة المؤمن | الدليل الروحي</title>
-    <!-- استدعاء خطوط عربية ذات طابع إسلامي وعصري -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <title>حقيبة المؤمن | الدليل الروحي المتكامل</title>
+    <!-- استدعاء خطوط عربية ممتازة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* لوحة الألوان الرئيسية */
-            --bg-dark: #0a0f12;       /* لون الخلفية الأساسي - أسود كحلي عميق */
-            --card-bg: #151f26;       /* لون البطاقات */
-            --gold: #d4af37;          /* ذهبي للزخارف والعناوين */
-            --green-accent: #115945;  /* أخضر إسلامي للزخارف والأزرار */
-            --text-main: #f0f0f0;     /* لون النصوص الأساسية */
-            --text-muted: #a0aab2;    /* لون النصوص الفرعية */
+            --bg-dark: #080c0e;       /* خلفية داكنة أعمق */
+            --card-bg: #121a20;       /* لون البطاقات والنوافذ */
+            --card-hover: #1a2630;
+            --gold: #d4af37;          /* ذهبي ملفت */
+            --gold-glow: rgba(212, 175, 55, 0.2);
+            --green-accent: #13634b;  /* أخضر إسلامي */
+            --green-hover: #0e4d3a;
+            --text-main: #f0f4f8;     
+            --text-muted: #94a3b8;    
+            --modal-bg: rgba(0, 0, 0, 0.85);
         }
 
         * {
@@ -28,77 +31,94 @@
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* شريط التنقل (Header) */
+        /* شريط العلوي (Header) - موسع */
         header {
             background-color: var(--card-bg);
-            padding: 20px;
-            text-align: center;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 2px solid var(--gold);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
         }
 
-        header h1 {
+        header .brand h1 {
             color: var(--gold);
             font-family: 'Amiri', serif;
-            font-size: 2.5rem;
-            margin-bottom: 5px;
+            font-size: 2.2rem;
+            display: inline-block;
         }
 
-        /* القسم الترحيبي (Hero Section) */
+        header .brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* حاوية رئيسية واسعة جداً */
+        .main-container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        /* القسم الترحيبي (Hero Banner) */
         .hero {
             text-align: center;
-            padding: 50px 20px;
-            background: radial-gradient(circle, var(--card-bg) 0%, var(--bg-dark) 100%);
+            padding: 40px 20px;
+            background: linear-gradient(180deg, var(--card-bg) 0%, var(--bg-dark) 100%);
+            border-radius: 20px;
+            border: 1px solid #1e2d38;
+            margin-bottom: 40px;
         }
 
         .hero .hadith {
-            font-size: 1.5rem;
-            color: var(--text-main);
-            max-width: 700px;
-            margin: 0 auto;
-            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
             color: var(--gold);
+            font-family: 'Amiri', serif;
+            margin-bottom: 10px;
         }
 
-        /* شبكة الأقسام (Grid Cards) */
-        .services {
+        /* شبكة الأقسام الموسعة */
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            padding: 40px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
+            margin-bottom: 50px;
         }
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px 20px;
+            border-radius: 16px;
+            padding: 35px 25px;
             text-align: center;
-            border: 1px solid #2a3b47;
-            transition: all 0.3s ease;
+            border: 1px solid #1e2d38;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
             transform: translateY(-8px);
+            background-color: var(--card-hover);
             border-color: var(--gold);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 10px 30px var(--gold-glow);
         }
 
         .card-icon {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 15px;
-            display: inline-block;
         }
 
         .card h3 {
             color: var(--gold);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
         }
 
         .card p {
@@ -106,81 +126,208 @@
             font-size: 0.95rem;
         }
 
-        /* قسم المسبحة الإلكترونية */
-        .tasbeeh-section {
-            text-align: center;
-            padding: 60px 20px;
-            background-color: var(--card-bg);
-            border-top: 3px solid var(--green-accent);
+        .card-btn {
             margin-top: 20px;
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border: 1px solid var(--gold);
         }
 
-        .tasbeeh-section h2 {
+        /* قسم المسبحة الإلكترونية - موسع بأزرار أكبر */
+        .tasbeeh-container {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid #1e2d38;
+            border-top: 4px solid var(--green-accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .tasbeeh-container h2 {
             color: var(--gold);
             font-family: 'Amiri', serif;
-            margin-bottom: 20px;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
         }
 
         .counter-display {
-            font-size: 5rem;
+            font-size: 5.5rem;
             color: var(--text-main);
             font-family: 'Amiri', serif;
-            margin: 10px 0;
+            margin: 20px auto;
             background: var(--bg-dark);
-            display: inline-block;
-            width: 150px;
-            height: 150px;
-            line-height: 150px;
+            width: 170px;
+            height: 170px;
+            line-height: 170px;
             border-radius: 50%;
             border: 4px solid var(--gold);
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.9), 0 0 15px var(--gold-glow);
         }
 
         .dikr-text {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-family: 'Amiri', serif;
-            color: var(--green-accent);
-            margin-bottom: 25px;
-            min-height: 45px;
+            color: #4cd137;
+            margin-bottom: 30px;
+            min-height: 50px;
         }
 
         .controls {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .btn {
             background-color: var(--green-accent);
             color: white;
-            border: 2px solid transparent;
-            padding: 12px 40px;
-            font-size: 1.2rem;
-            border-radius: 30px;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.3rem;
+            border-radius: 35px;
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
             font-weight: bold;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(19, 99, 75, 0.4);
         }
 
         .btn:hover {
-            background-color: #0d4434;
+            background-color: var(--green-hover);
+            transform: scale(1.03);
         }
 
         .btn:active {
-            transform: scale(0.95);
+            transform: scale(0.96);
         }
 
         .btn-reset {
             background-color: transparent;
-            border-color: #ff4c4c;
-            color: #ff4c4c;
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+            padding: 13px 35px;
+            box-shadow: none;
         }
 
         .btn-reset:hover {
-            background-color: #ff4c4c;
+            background-color: #e74c3c;
             color: white;
+        }
+
+        /* النافذة المنبثقة (Modal) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--modal-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background-color: var(--card-bg);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            transform: translateY(30px);
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid #2a3b47;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--gold);
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #ff4c4c;
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            line-height: 2.2;
+            color: #e0e0e0;
+            text-align: justify;
+        }
+
+        /* تخصيص شريط التمرير داخل النافذة */
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 4px;
+        }
+        .modal-body::-webkit-scrollbar-track {
+            background-color: var(--bg-dark);
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .list-item {
+            background-color: var(--bg-dark);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-right: 4px solid var(--gold);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .list-item:hover {
+            background-color: #18232c;
         }
     </style>
 </head>
@@ -188,83 +335,82 @@
 
     <!-- الترويسة -->
     <header>
-        <h1>حقيبة المؤمن</h1>
-        <p>دليلك الروحي للأدعية والزيارات والأعمال</p>
+        <div class="brand">
+            <h1>حقيبة المؤمن</h1>
+            <p>منصة الأدعية، الزيارات، والتلاوات المباركة</p>
+        </div>
     </header>
 
-    <!-- الواجهة الترحيبية -->
-    <div class="hero">
-        <p class="hadith">"إِنَّ الْحُسَيْنَ مِصْبَاحُ الْهُدَى وَسَفِينَةُ النَّجَاةِ"</p>
+    <div class="main-container">
+        <!-- الواجهة الترحيبية -->
+        <div class="hero">
+            <p class="hadith">"إِنَّ الْحُسَيْنَ مِصْبَاحُ الْهُدَى وَسَفِينَةُ النَّجَاةِ"</p>
+        </div>
+
+        <!-- شبكة الأقسام الأربعة -->
+        <div class="services-grid">
+            <div class="card" onclick="openModal('quran')">
+                <div class="card-icon">📖</div>
+                <h3>القرآن الكريم</h3>
+                <p>تلاوات وقراءة السور مع التفسير الميسر</p>
+                <span class="card-btn">عرض السور</span>
+            </div>
+
+            <div class="card" onclick="openModal('duas')">
+                <div class="card-icon">🤲</div>
+                <h3>الأدعية والمناجاة</h3>
+                <p>دعاء كميل، التوسل، الندبة، والصحيفة السجادية</p>
+                <span class="card-btn">قراءة الأدعية</span>
+            </div>
+
+            <div class="card" onclick="openModal('ziyarat')">
+                <div class="card-icon">🕌</div>
+                <h3>الزيارات المباركة</h3>
+                <p>زيارة عاشوراء، زيارة آل يس، وأمين الله</p>
+                <span class="card-btn">عرض الزيارات</span>
+            </div>
+
+            <div class="card" onclick="openModal('taqeebat')">
+                <div class="card-icon">📿</div>
+                <h3>تعقيبات الصلوات</h3>
+                <p>تعقيبات الصلوات الخمس اليومية والأدعية الخاصة</p>
+                <span class="card-btn">عرض التعقيبات</span>
+            </div>
+        </div>
+
+        <!-- قسم المسبحة الإلكترونية -->
+        <div class="tasbeeh-container">
+            <h2>تسبيح الزهراء (عليها السلام)</h2>
+            <div class="counter-display" id="counter">0</div>
+            <div class="dikr-text" id="dikr-text">الله أكبر</div>
+            
+            <div class="controls">
+                <button class="btn" onclick="increment()">تسبيح</button>
+                <button class="btn btn-reset" onclick="resetCounter()">تصفير</button>
+            </div>
+        </div>
     </div>
 
-    <!-- شبكة الخدمات -->
-    <div class="services">
-        <div class="card">
-            <div class="card-icon">📖</div>
-            <h3>القرآن الكريم</h3>
-            <p>تلاوة، تفسير، والبحث في السور والآيات</p>
-        </div>
-        <div class="card">
-            <div class="card-icon">🤲</div>
-            <h3>الأدعية والمناجاة</h3>
-            <p>دعاء كميل، التوسل، الندبة، وأدعية الصحيفة السجادية</p>
-        </div>
-        <div class="card">
-            <div class="card-icon">🕌</div>
-            <h3>الزيارات</h3>
-            <p>زيارة عاشوراء، زيارة آل يس، زيارة أمين الله، وزيارة وارث</p>
-        </div>
-        <div class="card">
-            <div class="card-icon">📿</div>
-            <h3>التعقيبات</h3>
-            <p>تعقيبات الصلوات اليومية والأعمال المستحبة</p>
+    <!-- النافذة المنبثقة (Modal Pop-up) -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="modalTitle">عنوان القسم</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalContent">
+                <!-- المحتوى يتغير بالـ JS -->
+            </div>
         </div>
     </div>
 
-    <!-- قسم المسبحة (تسبيح الزهراء) -->
-    <div class="tasbeeh-section">
-        <h2>تسبيح الزهراء (عليها السلام)</h2>
-        <div class="counter-display" id="counter">0</div>
-        <div class="dikr-text" id="dikr-text">الله أكبر</div>
-        
-        <div class="controls">
-            <button class="btn" onclick="increment()">تسبيح</button>
-            <button class="btn btn-reset" onclick="resetCounter()">تصفير</button>
-        </div>
-    </div>
-
-    <!-- كود الجافاسكربت الخاص بالتسبيح -->
     <script>
-        let count = 0;
-        const counterDisplay = document.getElementById('counter');
-        const dikrText = document.getElementById('dikr-text');
-
-        function increment() {
-            count++;
-            
-            // برمجة تسلسل تسبيح الزهراء (عليها السلام)
-            if (count <= 34) {
-                dikrText.innerText = "الله أكبر";
-            } else if (count <= 67) {
-                // 34 + 33 = 67
-                dikrText.innerText = "الحمد لله";
-            } else if (count <= 100) {
-                // 67 + 33 = 100
-                dikrText.innerText = "سبحان الله";
-            } else {
-                // إتمام دورة كاملة (100) وإعادة البدء
-                count = 1; 
-                dikrText.innerText = "الله أكبر";
-            }
-            
-            counterDisplay.innerText = count;
-        }
-
-        function resetCounter() {
-            count = 0;
-            counterDisplay.innerText = count;
-            dikrText.innerText = "الله أكبر";
-        }
-    </script>
-</body>
-</html>
+        // قاعدة بيانات مصغرة للمحتوى التفاعلي
+        const contentData = {
+            quran: {
+                title: "القرآن الكريم - سور مختارة",
+                content: `
+                    <div class="item-list">
+                        <div class="list-item">
+                            <strong style="color:var(--gold);">سورة الفاتحة</strong>
+                            <p style="margin-top:5px;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ (1) الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ (2) الرَّحْمَنِ الرَّحِيمِ (3) مَالِكِ يَوْمِ الدِّينِ (4) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (5) اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ (6) صNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
