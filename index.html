@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حقيبة المؤمن | الدليل الروحي</title>
+    <!-- استدعاء خطوط عربية ذات طابع إسلامي وعصري -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* لوحة الألوان الرئيسية */
+            --bg-dark: #0a0f12;       /* لون الخلفية الأساسي - أسود كحلي عميق */
+            --card-bg: #151f26;       /* لون البطاقات */
+            --gold: #d4af37;          /* ذهبي للزخارف والعناوين */
+            --green-accent: #115945;  /* أخضر إسلامي للزخارف والأزرار */
+            --text-main: #f0f0f0;     /* لون النصوص الأساسية */
+            --text-muted: #a0aab2;    /* لون النصوص الفرعية */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل (Header) */
+        header {
+            background-color: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            color: var(--gold);
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        /* القسم الترحيبي (Hero Section) */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: radial-gradient(circle, var(--card-bg) 0%, var(--bg-dark) 100%);
+        }
+
+        .hero .hadith {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: 'Amiri', serif;
+            color: var(--gold);
+        }
+
+        /* شبكة الأقسام (Grid Cards) */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid #2a3b47;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* قسم المسبحة الإلكترونية */
+        .tasbeeh-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--card-bg);
+            border-top: 3px solid var(--green-accent);
+            margin-top: 20px;
+        }
+
+        .tasbeeh-section h2 {
+            color: var(--gold);
+            font-family: 'Amiri', serif;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .counter-display {
+            font-size: 5rem;
+            color: var(--text-main);
+            font-family: 'Amiri', serif;
+            margin: 10px 0;
+            background: var(--bg-dark);
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .dikr-text {
+            font-size: 1.8rem;
+            font-family: 'Amiri', serif;
+            color: var(--green-accent);
+            margin-bottom: 25px;
+            min-height: 45px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--green-accent);
+            color: white;
+            border: 2px solid transparent;
+            padding: 12px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0d4434;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-reset {
+            background-color: transparent;
+            border-color: #ff4c4c;
+            color: #ff4c4c;
+        }
+
+        .btn-reset:hover {
+            background-color: #ff4c4c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الترويسة -->
+    <header>
+        <h1>حقيبة المؤمن</h1>
+        <p>دليلك الروحي للأدعية والزيارات والأعمال</p>
+    </header>
+
+    <!-- الواجهة الترحيبية -->
+    <div class="hero">
+        <p class="hadith">"إِنَّ الْحُسَيْنَ مِصْبَاحُ الْهُدَى وَسَفِينَةُ النَّجَاةِ"</p>
+    </div>
+
+    <!-- شبكة الخدمات -->
+    <div class="services">
+        <div class="card">
+            <div class="card-icon">📖</div>
+            <h3>القرآن الكريم</h3>
+            <p>تلاوة، تفسير، والبحث في السور والآيات</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🤲</div>
+            <h3>الأدعية والمناجاة</h3>
+            <p>دعاء كميل، التوسل، الندبة، وأدعية الصحيفة السجادية</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🕌</div>
+            <h3>الزيارات</h3>
+            <p>زيارة عاشوراء، زيارة آل يس، زيارة أمين الله، وزيارة وارث</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">📿</div>
+            <h3>التعقيبات</h3>
+            <p>تعقيبات الصلوات اليومية والأعمال المستحبة</p>
+        </div>
+    </div>
+
+    <!-- قسم المسبحة (تسبيح الزهراء) -->
+    <div class="tasbeeh-section">
+        <h2>تسبيح الزهراء (عليها السلام)</h2>
+        <div class="counter-display" id="counter">0</div>
+        <div class="dikr-text" id="dikr-text">الله أكبر</div>
+        
+        <div class="controls">
+            <button class="btn" onclick="increment()">تسبيح</button>
+            <button class="btn btn-reset" onclick="resetCounter()">تصفير</button>
+        </div>
+    </div>
+
+    <!-- كود الجافاسكربت الخاص بالتسبيح -->
+    <script>
+        let count = 0;
+        const counterDisplay = document.getElementById('counter');
+        const dikrText = document.getElementById('dikr-text');
+
+        function increment() {
+            count++;
+            
+            // برمجة تسلسل تسبيح الزهراء (عليها السلام)
+            if (count <= 34) {
+                dikrText.innerText = "الله أكبر";
+            } else if (count <= 67) {
+                // 34 + 33 = 67
+                dikrText.innerText = "الحمد لله";
+            } else if (count <= 100) {
+                // 67 + 33 = 100
+                dikrText.innerText = "سبحان الله";
+            } else {
+                // إتمام دورة كاملة (100) وإعادة البدء
+                count = 1; 
+                dikrText.innerText = "الله أكبر";
+            }
+            
+            counterDisplay.innerText = count;
+        }
+
+        function resetCounter() {
+            count = 0;
+            counterDisplay.innerText = count;
+            dikrText.innerText = "الله أكبر";
+        }
+    </script>
+</body>
+</html>
